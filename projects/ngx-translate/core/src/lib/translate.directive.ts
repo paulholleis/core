@@ -64,10 +64,18 @@ export class TranslateDirective implements AfterViewChecked, OnDestroy {
       // we add the key as content
       this.setContent(this.element.nativeElement, this.key);
       nodes = this.element.nativeElement.childNodes;
+      if (this.element.nativeElement.previousSibling && this.element.nativeElement.previousSibling.nodeName === '#text') {
+        // nodes = [this.element.nativeElement.previousSibling];
+        nodes = this.element.nativeElement.parentNode.childNodes;
+      }
     }
     for (let i = 0; i < nodes.length; ++i) {
       let node: any = nodes[i];
-      if (node.nodeType === 3) { // node type 3 is a text node
+      if (node.nodeType === 1 && node.firstChild && node.firstChild.firstChild && node.firstChild.firstChild.nodeName === '#text') {
+        node = node.firstChild;
+      }
+      if (node.nodeType === 3 || (node.firstChild && node.firstChild.nodeName === '#text')) {
+        // node type 3 is a text node
         let key: string;
         if (this.key) {
           key = this.key;

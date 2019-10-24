@@ -1,6 +1,6 @@
 {
-  "name": "@ngx-translate/core",
-  "description": "The internationalization (i18n) library for Angular",
+  "name": "@ngx-translate/core-ph",
+  "description": "The internationalization (i18n) library for Angular, fork by PH",
   "author": "Olivier Combe",
   "keywords": [
     "angular",

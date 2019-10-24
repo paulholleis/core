@@ -9,8 +9,8 @@ import {TranslateParser} from "./translate.parser";
 import {TranslateStore} from "./translate.store";
 import {isDefined, mergeDeep} from "./util";
 
-export const USE_STORE = new InjectionToken<string>('USE_STORE');
-export const USE_DEFAULT_LANG = new InjectionToken<string>('USE_DEFAULT_LANG');
+// export const USE_STORE = new InjectionToken<string>('USE_STORE');
+// export const USE_DEFAULT_LANG = new InjectionToken<string>('USE_DEFAULT_LANG');
 
 export interface TranslationChangeEvent {
   translations: any;
@@ -45,6 +45,9 @@ export class TranslateService {
   private _langs: Array<string> = [];
   private _translations: any = {};
   private _translationRequests: any = {};
+
+  isolate = false;
+  useDefaultLang = false;
 
   /**
    * An EventEmitter to listen to translation change events
@@ -151,8 +154,9 @@ export class TranslateService {
               public compiler: TranslateCompiler,
               public parser: TranslateParser,
               public missingTranslationHandler: MissingTranslationHandler,
-              @Inject(USE_DEFAULT_LANG) private useDefaultLang: boolean = true,
-              @Inject(USE_STORE) private isolate: boolean = false) {
+            ) {
+            // @Inject(USE_DEFAULT_LANG) private useDefaultLang: boolean = true,
+            // @Inject(USE_STORE) private isolate: boolean = false) {
   }
 
   /**
