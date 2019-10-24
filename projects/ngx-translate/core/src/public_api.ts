@@ -7,8 +7,8 @@ import {TranslateCompiler, TranslateFakeCompiler} from "./lib/translate.compiler
 import {TranslateDirective} from "./lib/translate.directive";
 import {TranslatePipe} from "./lib/translate.pipe";
 import {TranslateStore} from "./lib/translate.store";
-// import {USE_STORE} from "./lib/translate.service";
-// import {USE_DEFAULT_LANG} from "./lib/translate.service";
+import {USE_STORE} from "./lib/translate.service";
+import {USE_DEFAULT_LANG} from "./lib/translate.service";
 
 export * from "./lib/translate.loader";
 export * from "./lib/translate.service";
@@ -52,8 +52,8 @@ export class TranslateModule {
         config.parser || {provide: TranslateParser, useClass: TranslateDefaultParser},
         config.missingTranslationHandler || {provide: MissingTranslationHandler, useClass: FakeMissingTranslationHandler},
         TranslateStore,
-        // {provide: USE_STORE, useValue: config.isolate},
-        // {provide: USE_DEFAULT_LANG, useValue: config.useDefaultLang},
+        {provide: USE_STORE, useValue: config.isolate},
+        {provide: USE_DEFAULT_LANG, useValue: config.useDefaultLang},
         TranslateService
       ]
     };
@@ -70,8 +70,8 @@ export class TranslateModule {
         config.compiler || {provide: TranslateCompiler, useClass: TranslateFakeCompiler},
         config.parser || {provide: TranslateParser, useClass: TranslateDefaultParser},
         config.missingTranslationHandler || {provide: MissingTranslationHandler, useClass: FakeMissingTranslationHandler},
-        // {provide: USE_STORE, useValue: config.isolate},
-        // {provide: USE_DEFAULT_LANG, useValue: config.useDefaultLang},
+        {provide: USE_STORE, useValue: config.isolate},
+        {provide: USE_DEFAULT_LANG, useValue: config.useDefaultLang},
         TranslateService
       ]
     };
