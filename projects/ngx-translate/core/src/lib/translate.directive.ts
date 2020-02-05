@@ -74,6 +74,9 @@ export class TranslateDirective implements AfterViewChecked, OnDestroy {
       if (node.nodeType === 1 && node.firstChild && node.firstChild.firstChild && node.firstChild.firstChild.nodeName === '#text') {
         node = node.firstChild;
       }
+      if (node.className === 'mat-slide-toggle-label' && node.childNodes && node.childNodes.length >= 1 && node.childNodes[1] && node.childNodes[1].firstChild) {
+        node = node.childNodes[1].childNodes[1];
+      }
       if (node.nodeType === 3 || (node.firstChild && node.firstChild.nodeName === '#text')) {
         // node type 3 is a text node
         let key: string;
