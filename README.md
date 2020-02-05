@@ -6,3 +6,6 @@ Main changes:
 - package updates
 - had to change type of some internal variables from EventEmitter to Subscription in translate.pipe.ts
 
+When changing the .ts code, build with
+
+- ng build
